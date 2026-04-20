@@ -18,24 +18,6 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Entreprisekilde",
-    description:
-      "Android task management app built for construction teams, featuring role-based workflows, task assignment, real-time messaging, notifications, and a Firebase-backed architecture focused on practical day-to-day operations.",
-    tech: ["Kotlin", "Jetpack Compose", "Firebase", "MVVM"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/Veteranlegend/Entreprisekilde",
-        variant: "secondary",
-      },
-      {
-        label: "Demo Video",
-        href: "https://www.youtube.com/shorts/j0c0lWqCOR8",
-        variant: "primary",
-      },
-    ],
-  },
-  {
     title: "Skrotbil Platform",
     description:
       "Modern lead-generation and car-selling platform built around scrap car workflows, structured form handling, clean UI, and a scalable Next.js architecture with Supabase integration.",
@@ -49,6 +31,24 @@ const projects: Project[] = [
       {
         label: "Live Demo",
         href: "https://skrotbil-site.vercel.app",
+        variant: "primary",
+      },
+    ],
+  },
+  {
+    title: "Entreprisekilde",
+    description:
+      "Android task management app built for construction teams, featuring role-based workflows, task assignment, real-time messaging, notifications, and a Firebase-backed architecture focused on practical day-to-day operations.",
+    tech: ["Kotlin", "Jetpack Compose", "Firebase", "MVVM"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/Veteranlegend/Entreprisekilde",
+        variant: "secondary",
+      },
+      {
+        label: "Demo Video",
+        href: "https://www.youtube.com/shorts/j0c0lWqCOR8",
         variant: "primary",
       },
     ],
@@ -72,11 +72,22 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Weather App",
+    title: "Android Weather App",
     description:
-      "Weather application focused on clean UI, real-time weather data, and structured frontend development. This project will be added with repository and demo details once the final hosting and access setup is ready.",
-    tech: ["React", "TypeScript", "API Integration", "Responsive UI"],
-    links: [],
+      "Modern Android weather application built with Kotlin and Jetpack Compose, following MVVM and Clean Architecture. Features real-time UI updates, scalable state management using StateFlow, and a structured multi-layer architecture.",
+    tech: ["Kotlin", "Jetpack Compose", "MVVM", "Hilt", "StateFlow"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/Veteranlegend/Android-weather-app",
+        variant: "secondary",
+      },
+      {
+        label: "Demo Video",
+        href: "https://www.youtube.com/watch?v=EKoiY_iMXPE",
+        variant: "primary",
+      },
+    ],
   },
 ];
 
@@ -125,32 +136,26 @@ export default function Projects() {
                 </div>
 
                 <div className="mt-auto flex flex-wrap gap-3 pt-2">
-                  {project.links.length > 0 ? (
-                    project.links.map((link) => {
-                      const isPrimary = link.variant === "primary";
+                  {project.links.map((link) => {
+                    const isPrimary = link.variant === "primary";
 
-                      return (
-                        <a
-                          key={link.label}
-                          href={link.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className={
-                            isPrimary
-                              ? "inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-300 transition hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-white"
-                              : "inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-gray-200 transition hover:border-emerald-500/30 hover:text-white"
-                          }
-                        >
-                          <ArrowUpRight className="h-4 w-4" />
-                          {link.label}
-                        </a>
-                      );
-                    })
-                  ) : (
-                    <span className="inline-flex items-center rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-gray-400">
-                      Repository and demo coming soon
-                    </span>
-                  )}
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={
+                          isPrimary
+                            ? "inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-300 transition hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-white"
+                            : "inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-gray-200 transition hover:border-emerald-500/30 hover:text-white"
+                        }
+                      >
+                        <ArrowUpRight className="h-4 w-4" />
+                        {link.label}
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </motion.article>
