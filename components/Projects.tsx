@@ -48,7 +48,7 @@ const projects: Project[] = [
       },
       {
         label: "Live Demo",
-        href: "https://skrotbil-site-7u8zkoxse-veteranlegends-projects.vercel.app/",
+        href: "https://skrotbil-site.vercel.app",
         variant: "primary",
       },
     ],
