@@ -14,6 +14,7 @@ type Project = {
   description: string;
   tech: string[];
   links: ProjectLink[];
+  featured?: boolean;
 };
 
 const projects: Project[] = [
@@ -22,6 +23,7 @@ const projects: Project[] = [
     description:
       "Modern lead-generation and car-selling platform built around scrap car workflows, structured form handling, clean UI, and a scalable Next.js architecture with Supabase integration.",
     tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+    featured: true,
     links: [
       {
         label: "GitHub",
@@ -111,13 +113,25 @@ export default function Projects() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:border-emerald-400/40 hover:bg-white/[0.07]"
+              className={`group rounded-2xl p-6 backdrop-blur transition ${
+                project.featured
+                  ? "border border-emerald-400/60 bg-emerald-500/10 shadow-[0_0_30px_rgba(16,185,129,0.15)]"
+                  : "border border-white/10 bg-white/5 hover:border-emerald-400/40 hover:bg-white/[0.07]"
+              }`}
             >
               <div className="flex h-full flex-col space-y-5">
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-semibold text-white">
-                    {project.title}
-                  </h3>
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-2xl font-semibold text-white">
+                      {project.title}
+                    </h3>
+
+                    {project.featured && (
+                      <span className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-emerald-300">
+                        Featured
+                      </span>
+                    )}
+                  </div>
 
                   <p className="text-sm leading-7 text-gray-300">
                     {project.description}
