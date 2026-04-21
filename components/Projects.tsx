@@ -3,13 +3,14 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-type ProjectLink = {
+export type ProjectLink = {
   label: string;
   href: string;
   variant?: "primary" | "secondary";
 };
 
-type Project = {
+export type Project = {
+  _id: string;
   title: string;
   description: string;
   tech: string[];
@@ -17,101 +18,7 @@ type Project = {
   featured?: boolean;
 };
 
-const projects: Project[] = [
-  {
-    title: "Skrotbil Platform",
-    description:
-      "Modern lead-generation and car-selling platform built around scrap car workflows, structured form handling, clean UI, and a scalable Next.js architecture with Supabase integration.",
-    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
-    featured: true,
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/Veteranlegend/skrotbil-showcase",
-        variant: "secondary",
-      },
-      {
-        label: "Live Demo",
-        href: "https://skrotbil-site.vercel.app",
-        variant: "primary",
-      },
-    ],
-  },
-  {
-    title: "Direct Taxi Lebanon",
-    description:
-      "Production taxi lead-generation system built for a live business in Lebanon. Features a WhatsApp booking flow, distance-based price estimator, full Arabic/English bilingual support with RTL layout, zone-based routing, and Google Ads conversion tracking. Scores 95/100 Performance and 100/100 SEO on PageSpeed Insights.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel", "i18n", "RTL"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/Veteranlegend/taxi-system",
-        variant: "secondary",
-      },
-      {
-        label: "Live Site",
-        href: "https://www.directtaxilebanon.com",
-        variant: "primary",
-      },
-    ],
-  },
-  {
-    title: "Entreprisekilde",
-    description:
-      "Android task management app built for construction teams, featuring role-based workflows, task assignment, real-time messaging, notifications, and a Firebase-backed architecture focused on practical day-to-day operations.",
-    tech: ["Kotlin", "Jetpack Compose", "Firebase", "MVVM"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/Veteranlegend/Entreprisekilde",
-        variant: "secondary",
-      },
-      {
-        label: "Demo Video",
-        href: "https://www.youtube.com/shorts/j0c0lWqCOR8",
-        variant: "primary",
-      },
-    ],
-  },
-  {
-    title: "Game Hub",
-    description:
-      "Responsive game discovery web application with API integration, search, filtering, sorting, and a polished frontend experience built to strengthen modern React development and deployment practices.",
-    tech: ["React", "TypeScript", "Vite", "Chakra UI"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/Veteranlegend/game-hub",
-        variant: "secondary",
-      },
-      {
-        label: "Live Demo",
-        href: "https://game-hub-peach-nine.vercel.app/",
-        variant: "primary",
-      },
-    ],
-  },
-  {
-    title: "Android Weather App",
-    description:
-      "Modern Android weather application built with Kotlin and Jetpack Compose, following MVVM and Clean Architecture. Features real-time UI updates, scalable state management using StateFlow, and a structured multi-layer architecture.",
-    tech: ["Kotlin", "Jetpack Compose", "MVVM", "Hilt", "StateFlow"],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/Veteranlegend/Android-weather-app",
-        variant: "secondary",
-      },
-      {
-        label: "Demo Video",
-        href: "https://www.youtube.com/watch?v=EKoiY_iMXPE",
-        variant: "primary",
-      },
-    ],
-  },
-];
-
-export default function Projects() {
+export default function Projects({ projects }: { projects: Project[] }) {
   return (
     <section id="projects" className="bg-transparent px-6 py-24 text-white">
       <div className="mx-auto max-w-6xl space-y-12">
