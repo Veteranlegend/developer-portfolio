@@ -23,7 +23,6 @@ const projects: Project[] = [
     description:
       "Production taxi lead-generation system built for a live business in Lebanon. Features a WhatsApp booking flow, distance-based price estimator, full Arabic/English bilingual support with RTL layout, zone-based routing, and Google Ads conversion tracking. Scores 95/100 Performance and 100/100 SEO on PageSpeed Insights.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel", "i18n", "RTL"],
-    featured: true,
     links: [
       {
         label: "GitHub",
@@ -42,6 +41,7 @@ const projects: Project[] = [
     description:
       "Modern lead-generation and car-selling platform built around scrap car workflows, structured form handling, clean UI, and a scalable Next.js architecture with Supabase integration.",
     tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+    featured: true,
     links: [
       {
         label: "GitHub",
