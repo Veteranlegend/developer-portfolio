@@ -4,7 +4,17 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
 
-export default function Hero() {
+export type HeroData = {
+  name: string;
+  role: string;
+  tagline: string;
+  location?: string;
+  isOpenToWork?: boolean;
+  githubUrl?: string;
+  bio?: string[];
+};
+
+export default function Hero({ data }: { data: HeroData }) {
   return (
     <section
       id="home"
@@ -21,7 +31,7 @@ export default function Hero() {
             <div className="relative h-28 w-28 overflow-hidden rounded-full border border-emerald-500/40 shadow-[0_0_35px_rgba(16,185,129,0.18)]">
               <Image
                 src="/profile.jpg"
-                alt="Ahmad El Haj"
+                alt={data.name}
                 fill
                 className="object-cover"
                 priority
@@ -30,22 +40,24 @@ export default function Hero() {
 
             <div>
               <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-                Ahmad El Haj
+                {data.name}
               </h1>
-              <p className="mt-2 text-lg text-emerald-300">
-                Software Engineering Student
-              </p>
+              <p className="mt-2 text-lg text-emerald-300">{data.role}</p>
             </div>
 
-            <div className="inline-flex items-center gap-3 rounded-full border border-emerald-500/40 px-4 py-2 text-sm font-medium text-emerald-300">
-              <span className="h-3 w-3 rounded-full bg-emerald-400" />
-              Open to work
-            </div>
+            {data.isOpenToWork && (
+              <div className="inline-flex items-center gap-3 rounded-full border border-emerald-500/40 px-4 py-2 text-sm font-medium text-emerald-300">
+                <span className="h-3 w-3 rounded-full bg-emerald-400" />
+                Open to work
+              </div>
+            )}
 
-            <div className="flex items-center gap-2 text-lg text-gray-400">
-              <MapPin className="h-5 w-5 text-emerald-300" />
-              <span>Copenhagen</span>
-            </div>
+            {data.location && (
+              <div className="flex items-center gap-2 text-lg text-gray-400">
+                <MapPin className="h-5 w-5 text-emerald-300" />
+                <span>{data.location}</span>
+              </div>
+            )}
           </div>
         </motion.aside>
 
@@ -58,29 +70,17 @@ export default function Hero() {
           <div className="max-w-4xl space-y-8">
             <div className="space-y-4">
               <h2 className="text-4xl font-bold leading-tight md:text-6xl 2xl:text-7xl">
-                Building software that solves real problems.
+                {data.tagline}
               </h2>
             </div>
 
-            <div className="max-w-3xl space-y-6 text-lg leading-8 text-gray-300">
-              <p>
-                Final-year Software Engineering student at DTU, focused on
-                building real-world applications with clean architecture,
-                scalable systems, and strong development practices.
-              </p>
-
-              <p>
-                My work spans both web and mobile development, with hands-on
-                experience in React, Next.js, Kotlin, Firebase, Supabase, and
-                modern frontend and backend workflows.
-              </p>
-
-              <p>
-                I care deeply about clean code, separation of concerns, reusable
-                components, and turning complex ideas into structured and
-                maintainable software solutions.
-              </p>
-            </div>
+            {data.bio && data.bio.length > 0 && (
+              <div className="max-w-3xl space-y-6 text-lg leading-8 text-gray-300">
+                {data.bio.map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
+              </div>
+            )}
 
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap">
               <a
@@ -99,14 +99,16 @@ export default function Hero() {
                 Contact Me
               </a>
 
-              <a
-                href="https://github.com/Veteranlegend"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:border-emerald-500/40 hover:text-emerald-300"
-              >
-                GitHub
-              </a>
+              {data.githubUrl && (
+                <a
+                  href={data.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:border-emerald-500/40 hover:text-emerald-300"
+                >
+                  GitHub
+                </a>
+              )}
             </div>
           </div>
         </motion.div>

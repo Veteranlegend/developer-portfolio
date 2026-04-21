@@ -2,7 +2,14 @@
 
 import { motion } from "framer-motion";
 
-export default function Contact() {
+export type ContactData = {
+  email?: string;
+  githubUrl?: string;
+  linkedinUrl?: string;
+  contactDescription?: string;
+};
+
+export default function Contact({ data }: { data: ContactData }) {
   return (
     <section
       id="contact"
@@ -19,32 +26,35 @@ export default function Contact() {
           Let&apos;s Connect
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: false, amount: 0.3 }}
-          className="mx-auto max-w-2xl text-lg leading-8 text-gray-300"
-        >
-          I am open to part-time and full-time opportunities where I can
-          contribute, grow, and continue building impactful software solutions.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75 }}
-          viewport={{ once: false, amount: 0.3 }}
-          className="text-sm text-gray-400"
-        >
-          Email:{" "}
-          <a
-            href="mailto:ahmad_haj_95@hotmail.com"
-            className="text-emerald-300 transition hover:text-emerald-200"
+        {data.contactDescription && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="mx-auto max-w-2xl text-lg leading-8 text-gray-300"
           >
-            ahmad_haj_95@hotmail.com
-          </a>
-        </motion.p>
+            {data.contactDescription}
+          </motion.p>
+        )}
+
+        {data.email && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75 }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="text-sm text-gray-400"
+          >
+            Email:{" "}
+            <a
+              href={`mailto:${data.email}`}
+              className="text-emerald-300 transition hover:text-emerald-200"
+            >
+              {data.email}
+            </a>
+          </motion.p>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,30 +63,36 @@ export default function Contact() {
           viewport={{ once: false, amount: 0.3 }}
           className="flex flex-col items-center justify-center gap-4 md:flex-row"
         >
-          <a
-            href="mailto:ahmad_haj_95@hotmail.com"
-            className="rounded-full border border-emerald-500/50 px-6 py-3 text-sm text-emerald-300 transition hover:border-emerald-400 hover:text-white"
-          >
-            Email Me
-          </a>
+          {data.email && (
+            <a
+              href={`mailto:${data.email}`}
+              className="rounded-full border border-emerald-500/50 px-6 py-3 text-sm text-emerald-300 transition hover:border-emerald-400 hover:text-white"
+            >
+              Email Me
+            </a>
+          )}
 
-          <a
-            href="https://github.com/Veteranlegend"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full border border-white/15 px-6 py-3 text-sm text-gray-200 transition hover:border-white/40 hover:text-white"
-          >
-            GitHub
-          </a>
+          {data.githubUrl && (
+            <a
+              href={data.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-white/15 px-6 py-3 text-sm text-gray-200 transition hover:border-white/40 hover:text-white"
+            >
+              GitHub
+            </a>
+          )}
 
-          <a
-            href="https://www.linkedin.com"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full border border-white/15 px-6 py-3 text-sm text-gray-200 transition hover:border-white/40 hover:text-white"
-          >
-            LinkedIn
-          </a>
+          {data.linkedinUrl && (
+            <a
+              href={data.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-white/15 px-6 py-3 text-sm text-gray-200 transition hover:border-white/40 hover:text-white"
+            >
+              LinkedIn
+            </a>
+          )}
         </motion.div>
       </div>
     </section>

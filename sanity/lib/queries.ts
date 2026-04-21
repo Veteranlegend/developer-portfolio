@@ -14,3 +14,25 @@ export const PROJECTS_QUERY = defineQuery(`
     featured
   }
 `)
+
+export const SITE_SETTINGS_QUERY = defineQuery(`
+  *[_type == "siteSettings" && _id == "siteSettings"][0] {
+    name,
+    role,
+    tagline,
+    location,
+    isOpenToWork,
+    githubUrl,
+    bio,
+    aboutParagraphs,
+    aboutHighlights,
+    email,
+    linkedinUrl,
+    contactDescription,
+    skillGroups[] {
+      _key,
+      title,
+      items
+    }
+  }
+`)
