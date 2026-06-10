@@ -7,8 +7,6 @@ import Contact from "@/components/contact";
 import { client } from "@/sanity/lib/client";
 import { PROJECTS_QUERY, SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
 
-export const revalidate = 3600;
-
 export default async function Home() {
   const [projects, settings] = await Promise.all([
     client.fetch(PROJECTS_QUERY, {}, { next: { tags: ["projects"] } }),
